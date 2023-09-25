@@ -27,4 +27,16 @@ public class Abrigo {
     public String getEmail() {
         return email;
     }
+
+    public Abrigo setId(long id) {
+        this.id = id;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return """
+                "id":%s,"nome":"%s","telefone":"%s","email":"%s"
+                """.formatted(id,nome,telefone,email);
+    }
 }

@@ -40,4 +40,27 @@ public class Pet {
     public int getIdade() {
         return idade;
     }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + nome.hashCode();
+        result = 31 * result + tipo.hashCode();
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this){
+            return true;
+        }
+        if(!(o instanceof Pet))
+            return false;
+        Pet other = (Pet) o;
+        boolean idEquals = (this.id == null && other.id == null)
+                || (this.id != null && this.id.equals(other.id));
+        boolean nomeEquals = (this.nome == null && other.nome == null)
+                || (this.nome != null && this.nome.equals(other.nome));
+        return idEquals && nomeEquals;
+    }
 }
